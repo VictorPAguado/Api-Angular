@@ -1,0 +1,23 @@
+<div class="contenedor">
+    <div class="contenedor--top">
+        <div class="contenedor--top__texto">
+            <h3>Listado de Productos</h3>
+        </div>
+        <div class="contenedor--top__filtro">
+            <input type="text" name="filtro" value="" placeholder="Buscador">
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let article of articles">
+            <div class="card">
+                <img [src]="article.image" class="card-img-top">
+                <div class="card-body">
+                <h5 class="card--title">{{ article.name }}</h5>
+                <p class="card--text">{{ article.description }}</p>
+                <p class="card--text"><small class="text-muted">{{ article.stars }} estrellas</small></p>
+                <p class="card--text font-weight-bold">{{ article.price | currency }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
