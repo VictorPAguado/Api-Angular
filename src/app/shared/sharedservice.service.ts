@@ -8,11 +8,18 @@ import { Product } from '../main-prod/product.interface';
 })
 export class SharedService {
 
+  private url ="http://localhost:3000/products/"
   constructor(private http: HttpClient) {}
 
   getArticles(){
-    return this.http.get("http://localhost:3000/products");
+    return this.http.get(this.url);
   }
  
+  createProduct(product: Product){
+    return this.http.post(this.url, product).subscribe();
+  }
 
+  deleteProduct(id: number) {
+    return this.http.delete(this.url+id)
+  }
 };

@@ -1,1 +1,47 @@
-<p>main-gestion works!</p>
+<div class="caja">
+    <div>
+        <h1 class="caja--titulo">Creación/edición de productos</h1>
+        <div class="form">
+          <form>
+            <label for="nombre">Nombre del producto:</label>
+            <input type="text" [(ngModel)]="producto.name"
+            id="nombre" name="nombre" required>
+            
+            <label for="precio">Precio:</label>
+            <input type="number" [(ngModel)]="producto.price"
+            id="precio" name="precio" required>
+            
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" [(ngModel)]="producto.description"
+            name="descripcion" required></textarea>
+            
+            <label for="imagen">Ruta de la imagen:</label>
+            <input type="text" [(ngModel)]="producto.image"
+            id="imagen" name="imagen" required>
+            
+            <label for="opiniones">Opiniones:</label>
+            <textarea id="opiniones" [(ngModel)]="producto.stars"
+            name="opiniones" required></textarea>
+            
+            <div>
+              <button (click)="post()" class="editar">Guardar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    <div class="preview">
+        <ng-container [ngTemplateOutlet]="previewTemplate"></ng-container>
+    </div>
+  <ng-template #previewTemplate>
+    <div class="card">
+      <img [src]="producto.image" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.name }}</h5>
+        <p class="card-text">{{ producto.description }}</p>
+        <p class="card-text"><small class="text-muted">{{ producto.stars }} </small></p>
+        <p class="card-text font-weight-bold">{{ producto.price | currency }}</p>
+      </div>
+    </div>
+  </ng-template>
+</div>
